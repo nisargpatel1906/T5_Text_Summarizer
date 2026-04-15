@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workspace | T5 Summarizer</title>
+    <!-- Use Google Fonts (Inter + JetBrains Mono for a tech vibe) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
+</head>
+
+<body>
+    <div id="shader-bg"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; overflow: hidden; background: #000;">
+    </div>
+    <div class="grid-overlay"></div>
+
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="logo-text">
+                <h1>T5 <span>Summarizer</span></h1>
+                <span class="badge">Local GPU Instance</span>
+            </div>
+        </header>
+
+        <main class="workspace">
+            <!-- Left Column: Input -->
+            <div class="panel input-panel">
+                <div class="panel-header">
+                    <h2><i class="fa-regular fa-file-lines"></i> Source Text</h2>
+                    <span class="word-count" id="word-count">0 words</span>
+                </div>
+                <div class="textarea-wrapper">
+                    <textarea id="source-text"
+                        placeholder="Enter or paste the text you want to summarize here..."></textarea>
+                    <div class="focus-ring"></div>
+                </div>
+
+                <div class="toolbar">
+                    <div class="settings-group">
+                        <label for="max-length">Max Token Length</label>
+                        <div class="slider-container">
+                            <input type="range" id="max-length" min="50" max="500" value="150" step="10">
+                            <span class="slider-value" id="max-length-val">150</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-bar">
+                    <button id="clear-btn" class="secondary-btn">Clear Input</button>
+                    <button id="summarize-btn" class="primary-btn">
+                        <div class="btn-bg"></div>
+                        <span class="btn-text">Generate Summary</span>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <div class="loader-spinner hidden"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Output -->
+            <div class="panel output-panel">
+                <div class="panel-header">
+                    <h2><i class="fa-solid fa-bolt"></i> AI Output</h2>
+                    <button id="copy-btn" class="action-icon hidden" title="Copy text">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="output-content" id="output-container">
+                    <!-- Empty State -->
+                    <div class="empty-state" id="empty-state">
+                        <div class="empty-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h3>Ready to Summarize</h3>
+                        <p>Paste your text on the left and hit generate.</p>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="shimmer-wrapper hidden" id="shimmer">
+                        <div class="shimmer-line title"></div>
+                        <div class="shimmer-line"></div>
+                        <div class="shimmer-line"></div>
+                        <div class="shimmer-line"></div>
+                        <div class="shimmer-line short"></div>
+                    </div>
+
+                    <!-- Result State -->
+                    <div class="summary-result hidden" id="summary-result">
+                        <!-- Result injected here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
