@@ -228,6 +228,10 @@ The model was fine-tuned using the Hugging Face `Trainer` API on a summarization
 - Target truncation: 128 tokens
 - Decoding: Beam search with `num_beams=4`, `length_penalty=2.0`, `early_stopping=True`
 
+> ⚠️ **Checkpoint Note:** The model used in this application is taken from **checkpoint-4000**.
+> Training was stopped at step 4000 because the model began **overfitting** beyond that point — validation loss started increasing while training loss kept decreasing.
+> Using checkpoint-4000 gives the best generalization and summary quality on unseen text.
+
 ---
 
 ## 🖥️ Web Interface
