@@ -260,6 +260,20 @@ The frontend is a single-page application with:
 
 ---
 
+## 🔭 Future Goals
+
+The following improvements are planned for upcoming versions of this project:
+
+| # | Goal | Description |
+|---|---|---|
+| 1 | 🧠 **Upgrade to T5-Large / FLAN-T5** | Replace `t5-base` with `t5-large` or Google's `flan-t5-large` for better factual accuracy and fluency in summaries |
+| 2 | 📂 **Multi-File Batch Summarization** | Allow users to upload multiple `.txt` or `.pdf` files at once and download a combined summary report |
+| 3 | 🌍 **Multi-Language Support** | Add support for summarizing text in multiple languages (Hindi, French, Spanish) using multilingual T5 (`mT5`) |
+| 4 | 📊 **ROUGE Score Display** | Show real-time ROUGE-1, ROUGE-2, and ROUGE-L scores alongside each generated summary so users can gauge quality |
+| 5 | 🗂️ **Summary History & Export** | Save past summaries in a local session log with the ability to export them as `.txt` or `.pdf` files |
+
+---
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
