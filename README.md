@@ -226,11 +226,13 @@ The model was fine-tuned using the Hugging Face `Trainer` API on a summarization
 - Task prefix: `"summarize: "`
 - Input truncation: 1024 tokens
 - Target truncation: 128 tokens
+- Total epochs: 10
 - Decoding: Beam search with `num_beams=4`, `length_penalty=2.0`, `early_stopping=True`
 
-> ⚠️ **Checkpoint Note:** The model used in this application is taken from **checkpoint-4000**.
-> Training was stopped at step 4000 because the model began **overfitting** beyond that point — validation loss started increasing while training loss kept decreasing.
-> Using checkpoint-4000 gives the best generalization and summary quality on unseen text.
+> ⚠️ **Checkpoint Note:** The model used in this application is taken from **checkpoint-5500**.
+> Although the model was trained for all 10 epochs, the best validation performance and summary quality were achieved at step 5500 (mid-training).
+> Beyond checkpoint 5500, while training continued through all 10 epochs, the model showed signs of overfitting with diminishing returns on validation metrics.
+> Using checkpoint-5500 provides optimal generalization and the highest quality summaries on unseen text.
 
 ---
 
